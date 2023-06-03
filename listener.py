@@ -1,5 +1,6 @@
 import socket
 import re
+from database import Cords
 
 
 # tcp listener
@@ -25,7 +26,10 @@ try:
             if len(parts) == 18:
                 lat = int(parts[5][:2]) + (float(parts[5][2:]) / 60)
                 long = int(parts[7][:3]) + (float(parts[7][3:]) / 60)
-                print(lat, long)
+                serial = parts[1]
+                mode = parts[4]
+                Cords(serial=serial, lat=lat, lon=long).save()
+                print("Saved to db")
 
         client.close()
 except:
