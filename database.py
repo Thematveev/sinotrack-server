@@ -16,3 +16,4 @@ class Cords(Model):
 
 
 Cords.create_table()
+
