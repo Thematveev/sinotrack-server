@@ -23,8 +23,8 @@ try:
             print("Received>> ", data)
             parts = data.split(",")
             if len(parts) == 18:
-                lat = parts[5]
-                long = parts[7]
+                lat = int(parts[5][:3]) + float(parts[5][3:]) / 60
+                long = int(parts[7][:4]) + float(parts[7][3:]) / 60
                 print(lat, long)
 
         client.close()
